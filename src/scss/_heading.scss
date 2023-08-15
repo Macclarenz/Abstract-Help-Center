@@ -1,0 +1,159 @@
+@use './abstract/' as abs;
+@use './components/logo';
+@use './components/searchBtn';
+@use './components/menu';
+@use './components/requestBtn';
+@use './components/signInBtn';
+@use './components/searchInput';
+@use './components/searchCloseBtn';
+
+.header-container {
+    background-color: abs.$black;
+    padding-block: 1.5em;
+    position: relative;
+    width: 100%;
+}
+
+.header-wrapper {
+    @include abs.flexIt(space-between, center, row, nowrap, 1em);
+    margin: auto;
+    max-width: 1280px;
+    width: 90%;
+
+    .header-left-side {
+        @include abs.flexIt(space-between, center, row, wrap, 1em);
+        width: 100%;
+    }
+
+    .header-right-side {
+        @include abs.flexIt(space-between, center, row, nowrap, 0);
+
+        .nav-container {
+            @include abs.gridIt(1fr 1fr, 1fr, center, center);
+            background-color: abs.$black;
+            border-top: 1px solid abs.$pale-white;
+            padding: 2.5rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            transition: all 400ms ease-out;
+            scale: 0;
+            transform-origin: right top;
+
+            // when nav is active
+            &[display] {
+                scale: 1;
+
+                &>button {
+                    animation: abs.addBasicAnimation(abs.$animate-nav-buttons,
+                            400ms, ease, 400ms, forwards);
+                }
+            }
+
+            // when nav is not display in mobile
+            &>button {
+                opacity: 0;
+                animation: abs.addBasicAnimation(abs.$animate-closing-nav-buttons,
+                        400ms, ease-out, 0ms, none);
+            }
+
+            &>button:not(:last-of-type) {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    background-color: abs.$pale-white;
+                    position: absolute;
+                    top: 100%;
+                    bottom: -3px;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    width: 80%;
+                    margin: auto;
+                    transition: all 400ms ease-out;
+                }
+            }
+        }
+    }
+
+    .header-search-wrapper {
+        background-color: abs.$white;
+        padding-block: 1.75em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        scale: 0 1;
+        transition: all 400ms ease-out;
+        transform-origin: center right;
+
+        .header-search-input-container {
+            opacity: 0;
+        }
+
+        &[display] {
+            scale: 1;
+
+            .header-search-input-container {
+                animation: abs.addBasicAnimation(abs.$animate-opening-search-input,
+                        400ms, ease, 400ms, forwards);
+            }
+        }
+    }
+}
+
+@media (min-width: 375px) {
+    .header-container {
+        padding-block: 1.75em;
+    }
+
+    .header-wrapper {
+        .header-search-wrapper {
+            padding-block: calc(1em + 0.25px);
+        }
+    }
+}
+
+@media (min-width: 768px) {
+
+
+    .header-wrapper {
+        .header-search-wrapper {
+            padding-block: 1.20em;
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .header-wrapper {
+        .header-right-side {
+            justify-content: flex-end;
+            width: 100%;
+
+            .nav-container,
+            .nav-container[display] {
+                @include abs.flexIt(flex-end, center, row, nowrap, 0.75em);
+                border: none;
+                padding: 0;
+                position: static;
+                scale: 1;
+
+
+                &>button {
+                    animation: none;
+                    opacity: 1;
+                }
+
+                &>button:not(:last-of-type)::before {
+                    display: none;
+                }
+            }
+        }
+
+        .header-search-wrapper {
+            display: none;
+        }
+    }
+}

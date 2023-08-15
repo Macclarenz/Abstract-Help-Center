@@ -1,0 +1,13 @@
+@use './abstract/' as abs;
+
+@use './heading';
+@use './main';
+@use './footer';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

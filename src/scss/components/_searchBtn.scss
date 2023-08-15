@@ -1,0 +1,28 @@
+@use '../abstract/' as abs;
+
+#searchBtn {
+    @include abs.resetInput();
+    cursor: pointer;
+    padding: 0.5em;
+    transition: all 400ms ease-out;
+
+    &:hover svg {
+        scale: 1.2;
+    }
+
+    svg {
+        height: 18px;
+        width: 18px;
+        transition: inherit;
+    }
+
+    svg path {
+        fill: abs.$white;
+    }
+}
+
+@media (min-width: 900px) {
+    #searchBtn {
+        display: none;
+    }
+}

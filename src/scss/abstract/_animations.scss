@@ -1,0 +1,50 @@
+@use './var' as var;
+
+@keyframes animateNavButtons {
+    0% {
+        top: 0.25rem;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animateClosingNavButtons {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0.25rem;
+        opacity: 0;
+    }
+}
+
+@keyframes animateOpeningSearchInput {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animateClosingSearchInput {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+$animate-nav-buttons: animateNavButtons;
+$animate-closing-nav-buttons: animateClosingNavButtons;
+$animate-opening-search-input: animateOpeningSearchInput;
+$animate-closing-search-input: animateClosingSearchInput;

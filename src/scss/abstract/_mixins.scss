@@ -1,0 +1,45 @@
+@mixin flexIt($justify, $align, $direction: row, $wrap: wrap, $gap: 0) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+@mixin gridIt($row, $column, $justifyItems, $alignItems, $gap: 0) {
+    display: grid;
+    grid-template-rows: $row;
+    grid-template-columns: $column;
+    justify-items: $justifyItems;
+    align-items: $alignItems;
+    gap: $gap;
+}
+
+@mixin resetInput() {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+@mixin styleText($fontSize, $lineHeight, $color: black, $textAlign: left, $textDecoration: default, $textTransform: default) {
+    color: $color;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    text-align: $textAlign;
+    text-decoration: $textDecoration;
+    text-transform: $textTransform;
+}
+
+@mixin addAnimation($name, $duration, $timingFunction,
+    $delay: 0, $fill: initial, $iteration: initial,
+    $direction: initial) {
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-timing-function: $timingFunction;
+    animation-delay: $delay;
+    animation-fill-mode: $fill;
+    animation-iteration-count: $iteration;
+    animation-direction: $direction;
+}

@@ -1,0 +1,142 @@
+@use '../abstract/' as abs;
+
+$beforeStroke: -5px;
+$afterStroke: 6px;
+$shrinkScale: 0.75;
+
+@keyframes openingTopStroke {
+    0% {
+        top: $beforeStroke;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 0;
+        rotate: 45deg;
+    }
+}
+
+@keyframes openingBottomStroke {
+    0% {
+        top: $afterStroke;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 0;
+        rotate: -45deg;
+    }
+}
+
+@keyframes closingTopStroke {
+    0% {
+        top: 0;
+        rotate: 45deg;
+    }
+
+    100% {
+        top: $beforeStroke;
+        rotate: 0deg;
+    }
+}
+
+@keyframes closingBottomStroke {
+    0% {
+        top: 0;
+        rotate: -45deg;
+    }
+
+    100% {
+        top: $afterStroke;
+        rotate: 0deg;
+    }
+}
+
+// animation default setting
+$duration: 400ms;
+$timing-function: cubic-bezier(.39, .58, .57, 1);
+$delay: 0ms;
+$iteration: initial;
+$direction: initial;
+$fill: forwards;
+
+#navMenuBtn {
+    @include abs.resetInput();
+    cursor: pointer;
+    padding-block: 1em;
+    padding-inline: 0.5em 0;
+
+    // when nav is active in mobile
+    &[display] {
+        .nav-menu-middle-stroke {
+            background-color: transparent;
+            scale: $shrinkScale;
+
+            &::before {
+                animation: abs.addBasicAnimation(openingTopStroke,
+                        $duration, $timing-function, $delay, $fill);
+            }
+
+            &::after {
+                animation: abs.addBasicAnimation(openingBottomStroke,
+                        $duration, $timing-function, $delay, $fill);
+
+            }
+        }
+    }
+
+    &:hover {
+        .nav-menu-middle-stroke {
+            scale: 0.95;
+        }
+    }
+
+    .nav-menu-middle-stroke {
+        background-color: abs.$white;
+        display: block;
+        position: relative;
+        height: 2px;
+        width: 24px;
+        transition: all $duration $timing-function;
+
+        &::before,
+        &::after {
+            background-color: abs.$white;
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            width: calc(100%);
+            transition: all $duration $timing-function;
+        }
+
+        // second stroke
+        &::before {
+            top: $beforeStroke;
+            animation: abs.addBasicAnimation(closingTopStroke,
+                    $duration, $timing-function, $delay, forwards);
+        }
+
+        // third stroke
+        &::after {
+            top: $afterStroke;
+            animation: abs.addBasicAnimation(closingBottomStroke,
+                    $duration, $timing-function, $delay, forwards);
+        }
+    }
+
+}
+
+@media (min-width: 900px) {
+    #navMenuBtn {
+        display: none;
+    }
+}

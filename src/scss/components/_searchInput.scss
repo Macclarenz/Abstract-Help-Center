@@ -1,0 +1,46 @@
+@use '../abstract' as abs;
+
+.search-input {
+    @include abs.resetInput();
+    background-color: abs.$white;
+    border: 1px solid abs.$black;
+    border-radius: 0.25em;
+    color: abs.$black;
+    padding: 0.75em;
+    text-align: left;
+}
+
+.header-search-input-container {
+    @include abs.flexIt(center, center, row, nowrap, 0.5em);
+    width: 90%;
+    max-width: 550px;
+    margin: auto;
+}
+
+#headerSearchInput {
+    // padding: 1.15em;
+    width: 100%;
+}
+
+.main-search-input-wrapper {
+    width: 100%;
+
+    .main-search-input-container {
+        position: relative;
+        margin: auto;
+        max-width: 750px;
+
+    }
+}
+
+#mainSearchInput {
+    padding: 0.85em;
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 1080px) {
+    #mainSearchInput {
+        padding: 1em;
+    }
+}

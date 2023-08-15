@@ -1,0 +1,37 @@
+@use '../abstract/' as abs;
+
+.footer-nav-list {
+    list-style: none;
+
+    .footer-nav-link {
+        line-height: 1.6;
+        position: relative;
+        text-decoration: none;
+
+        &::before {
+            content: '';
+            background-color: abs.$violet;
+            bottom: -0.25em;
+            left: 0;
+            right: 0;
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            scale: 0 1;
+            transition: all 400ms ease-out;
+        }
+
+        &:hover::before {
+            scale: 1;
+        }
+    }
+}
+
+.footer-contact-container {
+    margin-block: 2em;
+
+    .footer-contact-link-text {
+        text-decoration: none;
+        line-height: 1.6;
+    }
+}

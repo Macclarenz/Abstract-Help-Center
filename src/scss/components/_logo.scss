@@ -1,0 +1,21 @@
+@use '../abstract/' as abs;
+
+.header-logo-link {
+    @include abs.flexIt(space-between, center, row, wrap, 0.5em);
+    text-decoration: none;
+
+    .header-logo-img {
+        min-width: 100%;
+    }
+
+    .header-logo-text {
+        color: abs.$white;
+        min-width: 100%;
+    }
+}
+
+@media (min-width: 375px) {
+    .header-logo-link {
+        flex-wrap: nowrap;
+    }
+}

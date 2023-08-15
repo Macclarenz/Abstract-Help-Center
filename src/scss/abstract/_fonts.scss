@@ -1,0 +1,131 @@
+@use './var' as var;
+
+@font-face {
+    src: url('/src/fonts/GT America Bold/GT America Bold.ttf') format('truetype');
+    font-family: 'GT America Bold';
+    font-weight: 700;
+}
+
+@font-face {
+    src: url('/src/fonts/GT America Regular/GT America Regular.ttf');
+    font-family: 'GT America Regular';
+    font-weight: 400;
+}
+
+@font-face {
+    src: url('/src/fonts/GT America Bold Italic/GT\ America\ Bold\ Italic.ttf');
+    font-family: 'GT America Italic';
+    font-weight: 700;
+    font-style: italic;
+}
+
+.logo-text {
+    font-size: var.$nav-link-size-mobile;
+    font-weight: 400;
+    font-family: var.$gt-regular;
+}
+
+#requestBtn,
+#signInBtn {
+    font-size: var.$nav-link-size-mobile;
+    font-weight: 400;
+    font-family: var.$gt-regular;
+}
+
+.search-input {
+    font-size: var.$search-text-size;
+    font-weight: 400;
+    font-family: var.$gt-regular;
+
+    &::placeholder {
+        font-size: var.$search-text-size;
+        font-weight: 400;
+        font-family: var.$gt-regular;
+    }
+}
+
+.main-heading-text {
+    font-family: var.$gt-regular;
+    font-size: clamp(var.$heading-1-size-mobile, 1rem + 6vw, var.$heading-1-size-tablet);
+    font-weight: 400;
+}
+
+.category-heading-text,
+.category-paragraph-text {
+    font-size: var.$paragraph-size;
+}
+
+.category-heading-text {
+    font-family: var.$gt-bold;
+    font-weight: 700;
+}
+
+.category-paragraph-text {
+    font-family: var.$gt-regular;
+    font-weight: 400;
+}
+
+.category-link-text {
+    font-family: var.$gt-regular;
+    font-size: var.$link-size;
+    font-weight: 400;
+}
+
+.footer-heading-text {
+    font-family: var.$gt-bold;
+    font-size: var.$paragraph-size;
+    font-weight: 700;
+}
+
+.footer-nav-link-text {
+    font-family: var.$gt-regular;
+    font-size: var.$footer-nav-link-size;
+    font-weight: 400;
+}
+
+.footer-contact-heading,
+.footer-contact-link-text {
+    font-size: var.$footer-nav-link-size;
+}
+
+.footer-contact-heading {
+    font-family: var.$gt-bold;
+    font-weight: 700;
+}
+
+.footer-contact-link-text {
+    font-family: var.$gt-regular;
+    font-weight: 400;
+}
+
+.copyright-text-container p {
+    font-family: var.$gt-regular;
+    font-size: var.$copyright-text-size;
+    font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .logo-text {
+        font-size: var.$nav-link-size-desktop;
+    }
+
+    // .main-heading-text {
+    //     font-size: ;
+    // }
+
+    #requestBtn,
+    #signInBtn {
+        font-size: var.$nav-link-size-desktop;
+    }
+}
+
+@media (min-width: 1080px) {
+    .main-heading-text {
+        font-size: clamp(var.$heading-1-size-tablet, 1rem + 10vw, var.$heading-1-size-desktop);
+    }
+
+    #requestBtn,
+    #signInBtn {
+        font-size: var.$nav-link-size-desktop;
+    }
+}

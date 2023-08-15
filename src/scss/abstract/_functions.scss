@@ -1,0 +1,12 @@
+@function addBasicAnimation($name, $duration, $timingFunction,
+    $delay: 0, $fillMode) {
+
+    @return $name $duration $timingFunction $delay $fillMode;
+}
+
+@function addFullAnimation($name, $duration, $timingFunction,
+    $delay: 0ms, $iteration,
+    $direction, $fillMode) {
+
+    @return $name $duration $timingFunction $delay $iteration $direction $fillMode;
+}

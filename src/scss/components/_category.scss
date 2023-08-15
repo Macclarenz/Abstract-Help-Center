@@ -1,0 +1,50 @@
+@use '../abstract/' as abs;
+
+.category {
+    @include abs.flexIt(center, flex-start, row, nowrap, 1em);
+
+    .category-img {
+        width: clamp(70px, 1rem + 10vw, 100px);
+    }
+
+    .category-text-container {
+        @include abs.flexIt(flex-start, flex-start, column, nowrap, 1em);
+
+        .category-paragraph-text {
+            line-height: 1.5;
+        }
+
+        .category-link-text {
+            color: abs.$violet;
+            position: relative;
+            text-decoration: none;
+
+            &::before {
+                background-color: abs.$violet;
+                content: '';
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                height: 1px;
+                width: 100%;
+                scale: 0 1;
+                transition: all 400ms ease-out;
+                transform-origin: left;
+            }
+
+            &:hover::before {
+                scale: 1;
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .category {
+        gap: 2.5em;
+        flex-basis: 550px;
+        justify-content: flex-start;
+    }
+}

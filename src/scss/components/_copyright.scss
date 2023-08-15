@@ -1,0 +1,22 @@
+@use '../abstract/' as abs;
+
+.copyright-container {
+    align-self: flex-end;
+    margin-top: 1em;
+
+    .footer-logo-img {
+        display: block;
+        max-width: 127px;
+        margin-bottom: 1.5em;
+    }
+
+    .copyright-text-container {
+        color: abs.$white;
+    }
+}
+
+@media (min-width: 1440px) {
+    .copyright-container {
+        margin-bottom: -3em;
+    }
+}

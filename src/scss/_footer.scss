@@ -1,0 +1,65 @@
+@use './abstract/' as abs;
+
+@use './components/footerNavLink';
+@use './components/copyright';
+
+.footer-container {
+    background-color: abs.$black;
+    padding-block: 3.5em 4em;
+}
+
+.footer-wrapper {
+    @include abs.flexIt(space-between, flex-start, row);
+    margin: auto;
+    max-width: 1360px;
+    width: 90%;
+}
+
+.footer-nav-wrapper {
+    @include abs.flexIt(stretch, stretch, row, wrap, 4em 2em);
+    // flex-basis: 50%;
+
+    .footer-nav-container {
+        flex-basis: 150px;
+        color: abs.$white;
+
+        & * {
+            color: abs.$white;
+        }
+
+        .footer-heading-text {
+            margin-bottom: 1em;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        padding-block: 3em 5em;
+
+    }
+
+    .footer-wrapper {
+
+        .footer-nav-wrapper {
+            flex-basis: 50%;
+
+        }
+    }
+}
+
+@media (min-width: 1080px) {
+    .footer-wrapper {
+        padding-block: 0.5em 2em;
+
+        .footer-nav-wrapper {
+            flex-basis: 70%;
+            gap: 3em;
+        }
+
+        .copyright-container {
+            flex-basis: 20%;
+            justify-self: center;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@use '../abstract/' as abs;
+
+#signInBtn {
+    @include abs.resetInput();
+    cursor: pointer;
+    color: abs.$white;
+    padding: 1em;
+    min-width: 200px;
+    transition: color 400ms ease-out 0ms;
+
+    &:hover {
+        color: abs.$violet;
+    }
+}
+
+@media (min-width: 900px) {
+    #signInBtn {
+        background-color: abs.$violet;
+        border-radius: 0.25em;
+        padding: 0.5em 1.5em;
+        min-width: auto;
+        transition-property: all;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            border: 3px solid;
+            border-color: transparent;
+            border-radius: 0.25em;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            transition: all 400ms ease-out;
+        }
+
+        &:hover {
+            color: abs.$white;
+
+            &::before {
+                border-color: abs.$white;
+                border-radius: 0.5em;
+                scale: 0.85 0.75;
+            }
+        }
+    }
+}

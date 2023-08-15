@@ -1,0 +1,54 @@
+@use '../abstract/' as abs;
+
+#requestBtn {
+    @include abs.resetInput();
+    cursor: pointer;
+    color: abs.$white;
+    padding: 1em;
+    min-width: 200px;
+    transition: color 400ms ease-out 0ms;
+
+    &:hover {
+        color: abs.$violet;
+    }
+}
+
+@media (min-width: 900px) {
+    #requestBtn {
+        border: 1px solid abs.$white;
+        border-radius: 0.25em;
+        display: block;
+        padding: 0.5em 1em;
+        position: relative;
+        text-align: center;
+        transition-property: all;
+        overflow: hidden;
+
+        &::before {
+            content: 'Submit a request';
+            background-color: abs.$white;
+            border-radius: 3em 0 2em 0;
+            display: block;
+            padding: 0.5em 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 5%;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            transition: all 400ms ease-out;
+        }
+
+        &:hover {
+            background-color: lighten(abs.$violet, 10%);
+            color: abs.$violet;
+            z-index: -1;
+
+            &::before {
+                left: 0%;
+                opacity: 1;
+            }
+        }
+    }
+}
